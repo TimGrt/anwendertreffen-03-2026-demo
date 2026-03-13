@@ -1,0 +1,7 @@
+---
+
+- name: Gather facts from all managed nodes
+  hosts: managed_nodes
+  vars:
+    ara_playbook_labels:
+      - facts

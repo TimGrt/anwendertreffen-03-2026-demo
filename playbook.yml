@@ -1,0 +1,20 @@
+---
+
+- name: Demo playbook to show how to record data with ARA
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Get git version of playbooks # noqa no-changed-when
+      ansible.builtin.command: git rev-parse HEAD
+      register: git_version
+
+    # ARA specific action plugin to record data in ARA, the key and value can be customized as needed.
+    - name: Record git version
+      ara_record:
+        key: "git_version"
+        value: "{{ git_version.stdout }}"
+      register: version
+
+    - name: Print recorded data
+      ansible.builtin.debug:
+        msg: "{{ version.playbook_id }} - {{ version.key }}: {{ version.value }}"

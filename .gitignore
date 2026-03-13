@@ -1,0 +1,8 @@
+# Logs folder with files from ansible-playbook execution or ansible-navigator runs
+logs/
+# Python Virtual Environment created by prepare-ara.yml Playbook
+ve-ara/
+# ARA database and settings
+.ara/
+# Ansible cache folder
+.ansible/
